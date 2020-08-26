@@ -24,22 +24,9 @@ const AuthStackNavigator = createStackNavigator({
 const AppStackNavigator = createStackNavigator({
 	HomePage: {
 		screen: HomePage,
-		navigationOptions: {
-			//title: 'Chats',
-		//	headerRight: () => (
-      //<Button
-       // onPress={() => alert('This is a button!')}
-       // title="Logout"
-       // color="black"
-     // />
-    //),
-		},
 	},
 	Chat: {
 		screen: Chat,
-		//navigationOptions: {
-		//	title: 'Chat Room',
-		//}
 	},
 });
 
