@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { chatInsert, chatList } from '../actions/chatAction';
 import SocketIOClient from 'socket.io-client';
 import { SERVERURL } from '../../config';
+import LinearGradient from 'react-native-linear-gradient';
 
 type Props = {
 	name?: string,
@@ -79,11 +80,13 @@ class Chat extends React.Component<Props>{
 			timeTextStyle = {{
 				right: {
 					color: '#000000',
-					fontWeight: 'bold'
+					fontWeight: 'bold',
+					marginTop:5,
 				},
 				left: {
 					color: '#000000',
-					fontWeight: 'bold'
+					fontWeight: 'bold',
+					marginTop:5,
 				},
 			}}
 			wrapperStyle = {{
@@ -99,7 +102,10 @@ class Chat extends React.Component<Props>{
 
 	render(){
 		return(
-			<View style = {{ flex:1, marginTop: 0, backgroundColor: '#fff' }}>
+			<LinearGradient style={styles.linearGradient}
+          	colors={['#4292B9', '#70C4BC', '#8FD79F', '#B2E782', '#FFF54E']}
+          	start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}>
 			<GiftedChat
 				messages = {this.state.messages}
 				onSend = {messages => this.submitChatMessage(messages)}
@@ -108,7 +114,7 @@ class Chat extends React.Component<Props>{
 					_id: this.props.userReducer.userAuth._id,
 				}}
 			/>
-		</View>
+		</LinearGradient>
 		)
 	}
 }
@@ -133,5 +139,13 @@ export default connect(
 )(Chat);
 
 const styles = StyleSheet.create({
-	})
+
+	linearGradient: {
+		flex:1,
+    	borderRadius: 2,
+    	height: 400,
+    	width: '100%',
+    },
+
+})
 
