@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
-import { Text, TouchableOpacity, StyleSheet, View, Image} from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, Image,Button} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { userList } from '../actions/userAction';
+import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -14,20 +15,25 @@ class HomePage extends Component{
 	}
 
 	static navigationOptions = ({navigation}) => {
+		const { params = {} } = navigation.state;
 		return {
 			headerTitle: 'Chats',
-			headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="Logout"
-        color="black"
-      />
+			headerRight: ()=>(
+      <TouchableOpacity 
+				onPress = {
+					() => params.lg()
+				}>
+				<Text style = {styles.SText}> Logout 
+				 <Image source = {require('./logout.png')} 
+			 style = {{ width: 30, height: 29, marginRight:10,marginLeft:10}}/></Text>
+		</TouchableOpacity>
     ),
 		};
 	};
 
 	componentDidMount(){
 		this.props.onUserList();
+		this.props.navigation.setParams({ lg: this.logout });
 	}
 
 	goChat = (userid, name) => {
@@ -50,7 +56,10 @@ class HomePage extends Component{
        return (
       <View style={styles.container}>
       {users && users.length>0 ?
-        <View>
+        <LinearGradient style={styles.linearGradient}
+          	colors={['#4292B9', '#70C4BC', '#8FD79F', '#B2E782', '#FFF54E']}
+          	start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}>
         {users.map((item, index) => {
         return (
         <TouchableOpacity onPress={()=>this.goChat(item._id, item.name)} key={index}>
@@ -59,17 +68,11 @@ class HomePage extends Component{
             <Image source = {require('./user.png')} 
 			 style = {{ width: 38, height: 37, marginRight:10}}/>
 			 <Text style={{color:'#fff',}}>hi</Text>
-			 {item.name}
+			 {item.displayname}
           </Text>
         </TouchableOpacity>
       )})}
-    </View>:null}
-    <TouchableOpacity 
-				onPress = {
-					() => this.logout()
-				}>
-				<Text style = {styles.SText}> Logout </Text>
-		</TouchableOpacity>
+     </LinearGradient>:null}
       </View>
     )
 
@@ -97,20 +100,27 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,  
 		paddingTop: 1, 
-		backgroundColor:'#000',
+		backgroundColor:'#DCDCDC',
 	},
 	item: {
         fontSize:20,
         height:60,
         padding:0,
-        margin:1,
+        marginBottom:2,
+        marginTop:2,
         backgroundColor: '#fff',
     },
     SText: {
-		color: 'white',
+		color: 'black',
 		fontSize: 18,
-		marginTop: 5,
+		marginRight:10,
+		marginBottom: 15,
 		fontWeight: 'bold',
-
-	}
+	},
+	linearGradient: {
+		flex:1,
+    	borderRadius: 2,
+    	height: 400,
+    	width: '100%',
+    },
 });
