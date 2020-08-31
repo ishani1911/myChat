@@ -70,31 +70,28 @@ class Chat extends React.Component<Props>{
 			textStyle = {{
 				right: {
 					color: '#000000',
-					fontWeight: 'bold'
 				},
 				left: {
 					color: '#000000',
-					fontWeight: 'bold',
 				},
 			}}
 			timeTextStyle = {{
 				right: {
 					color: '#000000',
-					fontWeight: 'bold',
 					marginTop:5,
 				},
 				left: {
 					color: '#000000',
-					fontWeight: 'bold',
 					marginTop:5,
 				},
 			}}
 			wrapperStyle = {{
 				left: {
 					backgroundColor: '#FFFF99',
+					marginLeft: -44,
 				},
 				right: {
-					backgroundColor: '#ADD8E6',
+					backgroundColor: '#CCFFFF',
 				},
 			}} />
 		);
