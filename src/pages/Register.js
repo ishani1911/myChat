@@ -100,7 +100,7 @@ componentDidUpdate(nextProps){
 			<Text style ={styles.RegisterText}>Register</Text>
 
 			<Image source = {require('./icon.png')} 
-			 style = {{ width: 200, height: 190 ,marginTop:-10}}/>
+			 style = {{ width: 200, height: 170 ,marginTop:-10}}/>
 
 			<TextInput style = {styles.input}
 			underlineColorAndroid = "transparent"
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginBottom: 15,
 		height: 40,
-		width: 290,
+		width: 255,
 		marginTop:5,
 	},
 	submitButtonText: {
