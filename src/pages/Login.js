@@ -84,7 +84,7 @@ componentDidUpdate(nextProps){
 			 Welcome to MyChat!</Text>
 			
 			<Image source = {require('./icon.png')} 
-			 style = {{ width: 200, height: 200 }}/>
+			 style = {{ width: 200, height: 180 }}/>
 			
 			<Text style ={styles.loginText}>Login</Text>
 			<Text></Text>
@@ -121,8 +121,7 @@ componentDidUpdate(nextProps){
 		
 		<Text></Text>
 		<Text></Text>
-		<Text></Text>
-		<Text></Text>
+		
 		<TouchableOpacity 
 				onPress = {
 					() => this.props.navigation.navigate('Register')
@@ -155,7 +154,7 @@ export default connect(
 const styles = StyleSheet.create({
 	
 	titleText: {
-		margin: 0,
+		marginTop: -10,
 		fontSize: 30,
 		alignItems: 'center',
 		fontWeight: 'bold',
